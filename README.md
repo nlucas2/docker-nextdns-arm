@@ -2,7 +2,7 @@
 
 ## Description
 
-Installs nextdns client in a Debian Slim Docker image:
+Installs nextdns client in a Raspbian/Stretch image:
 https://github.com/nextdns/nextdns
 
 ## Configuration
