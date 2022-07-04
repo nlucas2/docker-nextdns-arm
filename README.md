@@ -2,7 +2,7 @@
 
 ## Description
 
-Installs nextdns client in a Raspbian/Stretch image:
+Installs nextdns client in a alpine image:
 https://github.com/nextdns/nextdns
 
 ## Configuration
@@ -21,7 +21,7 @@ to a local port:
 docker run -p 53:53/tcp -p 53:53/udp
   -e NEXTDNS_ID=000000 \
   --name nextdns \
-  steeef/nextdns
+  nlucas2/nextdns
 ```
 
 NOTE: this image does not include a DNS server with anything like caching. For
