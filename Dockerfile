@@ -9,8 +9,8 @@ ENV UID 1000
 ENV GID 1000
 ENV TIMEZONE UTC
 
-RUN apt-get update \
-  && apt-get install -y curl libcap2-bin
+RUN apk update \
+  && apk add --no-cache -y curl libcap
 
 RUN mkdir /tmp/nextdns \
     && curl -fsSL https://github.com/nextdns/nextdns/releases/download/v${NEXTDNS_VERSION}/nextdns_${NEXTDNS_VERSION}_linux_arm64.tar.gz -o /tmp/nextdns/nextdns.tar.gz \
@@ -18,7 +18,7 @@ RUN mkdir /tmp/nextdns \
     && echo "${NEXTDNS_SHA256} *nextdns.tar.gz" | sha256sum -c - \
     && tar zxf nextdns.tar.gz \
     && addgroup --gid ${GID} nextdns \
-    && adduser --system --uid ${UID} --gid ${GID} --home /nextdns nextdns \
+    && adduser --system --uid ${UID} --grp nextdns --home /nextdns nextdns \
     && mv ./nextdns /nextdns/nextdns \
     && chown nextdns.nextdns /nextdns/nextdns \
     && setcap 'cap_net_bind_service=+ep' /nextdns/nextdns \
