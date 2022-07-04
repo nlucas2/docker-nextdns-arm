@@ -1,4 +1,4 @@
-FROM raspbian/stretch
+FROM alpine
 LABEL maintainer="Nick Lucas <nlucas@ieee.org>"
 
 ENV NEXTDNS_VERSION=1.37.11 \
